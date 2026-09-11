@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lighthouse Spokane — An Adult Education Study &amp; Practice Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5F4F0;
+    --teal:#074F57;
+    --ocean:#077187;
+    --sage:#74A57F;
+    --gold:#C9961E;
+    --gray-warm:#9A9498;
+    --gray-light:#C5C6C7;
+    --max:680px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--teal);
+    font-family:'Inter',sans-serif;
+    font-weight:400;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img{max-width:100%;display:block;}
+
+  a{color:var(--ocean);}
+
+  ::selection{background:var(--gold);color:#fff;}
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(245,244,240,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--gray-light);
+  }
+  .nav-inner{
+    max-width:1180px;
+    margin:0 auto;
+    padding:14px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+  }
+  .brand img{height:38px;width:auto;}
+  .brand span{
+    font-size:0.78rem;
+    font-weight:500;
+    letter-spacing:0.14em;
+    color:var(--teal);
+  }
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+    margin:0;
+    padding:0;
+  }
+  nav a{
+    text-decoration:none;
+    color:var(--teal);
+    font-size:0.82rem;
+    font-weight:500;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:6px 0;
+    border-bottom:1px solid transparent;
+    transition:border-color 0.2s ease, color 0.2s ease;
+  }
+  nav a:hover{border-color:var(--gold); color:var(--ocean);}
+
+  .nav-toggle{
+    display:none;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:6px;
+  }
+  .nav-toggle span{
+    display:block;
+    width:22px;
+    height:2px;
+    background:var(--teal);
+    margin:4px 0;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding:96px 28px 88px;
+    text-align:center;
+  }
+  .hero-rings{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:1100px;
+    max-width:220vw;
+    aspect-ratio:1100/760;
+    z-index:0;
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative;
+    z-index:1;
+    max-width:640px;
+    margin:0 auto;
+  }
+  .hero .eyebrow{
+    font-size:0.78rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--sage);
+    font-weight:500;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 5vw, 3.4rem);
+    font-weight:500;
+    letter-spacing:0.08em;
+    margin:0 0 20px;
+    text-transform:uppercase;
+    color:var(--teal);
+  }
+  .hero p.lede{
+    font-size:1.1rem;
+    font-weight:300;
+    color:var(--teal);
+    max-width:520px;
+    margin:0 auto 34px;
+  }
+  .dot-divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin:0 auto 34px;
+  }
+  .dot-divider .line{width:44px;height:1px;background:var(--gray-light);}
+  .dot-divider .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+
+  .btn{
+    display:inline-block;
+    background:var(--teal);
+    color:var(--cream);
+    text-decoration:none;
+    font-size:0.85rem;
+    font-weight:500;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:14px 30px;
+    border-radius:2px;
+    transition:background 0.2s ease;
+  }
+  .btn:hover{background:var(--ocean);}
+  .btn.gold{background:var(--gold);color:#3a2a05;}
+  .btn.gold:hover{background:#b98717;}
+
+  /* ---------- Sections ---------- */
+  section{
+    padding:88px 28px;
+    max-width:var(--max);
+    margin:0 auto;
+  }
+  section.wide{max-width:920px;}
+
+  .section-label{
+    font-size:0.78rem;
+    font-weight:500;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--sage);
+    margin:0 0 14px;
+  }
+  h2{
+    font-size:1.9rem;
+    font-weight:500;
+    letter-spacing:0.01em;
+    margin:0 0 28px;
+    color:var(--teal);
+  }
+  h3{
+    font-size:1.15rem;
+    font-weight:600;
+    margin:0 0 8px;
+    color:var(--teal);
+  }
+  p{margin:0 0 20px;font-weight:300; color:#0f4147;}
+  p:last-child{margin-bottom:0;}
+  strong{font-weight:600;}
+
+  hr.rule{
+    border:none;
+    border-top:1px solid var(--gray-light);
+    margin:40px 0;
+  }
+
+  .link-out{
+    color:var(--ocean);
+    text-decoration:none;
+    border-bottom:1px solid var(--gray-light);
+    transition:border-color 0.2s ease;
+  }
+  .link-out:hover{border-color:var(--ocean);}
+
+  .partners{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 28px;
+    margin-top:18px;
+    font-size:0.92rem;
+  }
+
+  /* ---------- CTA band ---------- */
+  .cta-band{
+    max-width:none;
+    background:var(--teal);
+    color:var(--cream);
+    padding:64px 28px;
+    text-align:center;
+  }
+  .cta-band .cta-inner{max-width:520px;margin:0 auto;}
+  .cta-band h2{color:var(--cream); font-size:1.5rem;}
+  .cta-band p{color:#cfe3e1;font-weight:300;}
+
+  /* ---------- Team ---------- */
+  .team-list{
+    display:flex;
+    flex-direction:column;
+    gap:1px;
+    background:var(--gray-light);
+    border:1px solid var(--gray-light);
+  }
+  .team-card{
+    background:var(--cream);
+    padding:22px 24px;
+  }
+  .team-head{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    cursor:pointer;
+    background:none;
+    border:none;
+    width:100%;
+    text-align:left;
+    padding:0;
+    font-family:inherit;
+  }
+  .avatar{
+    flex:none;
+    width:56px;
+    height:56px;
+    position:relative;
+  }
+  .avatar svg{width:100%;height:100%;}
+  .avatar .initials{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--teal);
+    letter-spacing:0.02em;
+  }
+  .team-name-wrap{flex:1;}
+  .team-name{font-size:1.05rem;font-weight:600;color:var(--teal);}
+  .team-role{font-size:0.85rem;color:var(--gray-warm);font-weight:400;margin-top:2px;}
+  .chevron{
+    flex:none;
+    width:18px;height:18px;
+    color:var(--sage);
+    transition:transform 0.25s ease;
+  }
+  .team-card.open .chevron{transform:rotate(45deg);}
+
+  .team-bio{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.3s ease, opacity 0.25s ease, margin-top 0.3s ease;
+    opacity:0;
+  }
+  .team-card.open .team-bio{
+    max-height:400px;
+    opacity:1;
+    margin-top:18px;
+  }
+  .team-bio-inner{
+    padding-left:74px;
+    font-size:0.95rem;
+    font-weight:300;
+    color:#0f4147;
+  }
+  .placeholder-tag{
+    display:inline-block;
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--gray-warm);
+    border:1px solid var(--gray-light);
+    padding:2px 8px;
+    border-radius:2px;
+    margin-bottom:10px;
+  }
+
+  /* ---------- Events ---------- */
+  .events-list{
+    border-top:1px solid var(--gray-light);
+  }
+  .event-item{
+    padding:26px 0;
+    border-bottom:1px solid var(--gray-light);
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:20px;
+  }
+  .event-meta{
+    font-size:0.82rem;
+    font-weight:500;
+    letter-spacing:0.04em;
+    color:var(--ocean);
+  }
+  .event-meta .place{
+    display:block;
+    color:var(--gray-warm);
+    font-weight:400;
+    margin-top:4px;
+  }
+  .event-title{font-size:1.05rem;font-weight:600;color:var(--teal);margin-bottom:6px;}
+  .event-desc{font-size:0.95rem;font-weight:300;color:#0f4147;}
+  .events-note{
+    margin-top:26px;
+    font-size:0.88rem;
+    color:var(--gray-warm);
+    font-style:italic;
+  }
+
+  @media (max-width:560px){
+    .event-item{grid-template-columns:1fr;gap:6px;}
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-box{
+    border:1px solid var(--gray-light);
+    padding:36px 30px;
+    text-align:center;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--teal);
+    color:var(--cream);
+    padding:56px 28px 32px;
+  }
+  .footer-inner{
+    max-width:1180px;
+    margin:0 auto;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:36px;
+  }
+  .footer-brand{display:flex;align-items:center;gap:12px;}
+  .footer-brand img{height:34px;filter:brightness(0) invert(1);opacity:0.9;}
+  .footer-brand span{font-size:0.8rem;letter-spacing:0.12em;font-weight:500;}
+  footer .btn.gold{margin-top:4px;}
+  .footer-links{font-size:0.85rem;font-weight:300;color:#cfe3e1;}
+  .footer-links a{color:#cfe3e1;text-decoration:none;border-bottom:1px solid rgba(207,227,225,0.4);}
+  .footer-links a:hover{border-color:#cfe3e1;}
+  .footer-bottom{
+    max-width:1180px;
+    margin:40px auto 0;
+    padding-top:24px;
+    border-top:1px solid rgba(207,227,225,0.2);
+    font-size:0.78rem;
+    color:#9fc4c1;
+  }
+
+  /* ---------- Mobile nav ---------- */
+  @media (max-width:760px){
+    nav ul{
+      display:none;
+      position:absolute;
+      top:100%;
+      left:0;
+      right:0;
+      background:var(--cream);
+      border-bottom:1px solid var(--gray-light);
+      flex-direction:column;
+      gap:0;
+      padding:8px 0;
+    }
+    nav ul.open{display:flex;}
+    nav li{border-top:1px solid var(--gray-light);}
+    nav a{display:block;padding:14px 28px;}
+    .nav-toggle{display:block;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <img src="assets/logo.png" alt="Lighthouse Spokane mark">
+      <span>LIGHTHOUSE&nbsp;SPOKANE</span>
+    </a>
+    <nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="navList">
+        <li><a href="#background">Background</a></li>
+        <li><a href="#team">Team Gallery</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<!-- ---------- HERO ---------- -->
+<div class="hero">
+  <svg class="hero-rings" viewBox="0 0 1100 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="550" cy="380" rx="540" ry="372" stroke="#074F57" stroke-opacity="0.16" stroke-width="1.5"/>
+    <ellipse cx="550" cy="380" rx="440" ry="303" stroke="#74A57F" stroke-opacity="0.22" stroke-width="1.5"/>
+    <ellipse cx="550" cy="380" rx="330" ry="228" stroke="#C9961E" stroke-opacity="0.3" stroke-width="1.5"/>
+    <ellipse cx="550" cy="380" rx="220" ry="152" stroke="#077187" stroke-opacity="0.18" stroke-width="1.5"/>
+  </svg>
+  <div class="hero-inner">
+    <div class="eyebrow">An Adult Education Study &amp; Practice Group · Spokane, WA</div>
+    <h1>Lighthouse Spokane</h1>
+    <p class="lede">A gathering point for curious minds working through the philosophy, spirituality, and practice of a genuinely uncertain moment — together.</p>
+    <div class="dot-divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+    <a href="#about" class="btn">See how it works</a>
+  </div>
+</div>
+
+<!-- ---------- BACKGROUND ---------- -->
+<section id="background">
+  <div class="section-label">Background</div>
+  <h2>Where this comes from</h2>
+
+  <p>Lighthouse Spokane sits at the intersection of a few different threads, and it's worth naming each of them.</p>
+
+  <p><strong>The Liminal Web</strong> is a loose, informal network of thinkers, practitioners, and communities exploring what comes after modernity and postmodernism — people asking how we make sense of a moment defined by rapid change, competing worldviews, and a search for meaning that doesn't fit neatly into old categories. It isn't a single philosophy or institution; it's more like a shared conversation happening across many disciplines — psychology, education, spirituality, systems thinking — among people trying to think clearly about disorientation without pretending it isn't there.</p>
+
+  <p><strong>Unitarian Universalism (UU)</strong> is a faith tradition built on shared values rather than a fixed creed — covenantal community, the inherent worth of every person, and a free and responsible search for truth and meaning drawn from many sources: science, philosophy, world religions, direct experience. UU congregations often become homes for exactly this kind of open inquiry, which is part of why this project found a natural partner there.</p>
+
+  <p><strong>The UUA's New Communities Partnership Program</strong> provides support for new, experimental forms of spiritual community — groups that don't necessarily look like a traditional congregation but are doing similar work: gathering people around shared inquiry, practice, and mutual support. Lighthouse Spokane exists because of a grant through this program via the Inland Northwest Unitarian Universalist Community. <a href="#" class="link-out">Learn more about the UUA New Communities Partnership Program →</a></p>
+
+  <p><strong>What we're attempting:</strong> Liminal philosophy and contemplative spiritual practice can be dense — dense enough that they often stay confined to academic circles or established spiritual communities with their own barriers to entry. Lighthouse Spokane exists to take that material and make it approachable for curious, secular-minded people in Spokane who want to think seriously about the moment we're in, without needing a philosophy degree or a pre-existing spiritual practice to participate. The goal isn't to hand people conclusions — it's to build an actual community of practice: a group of people who keep showing up, keep thinking together, and slowly develop shared language and tools for navigating uncertain terrain.</p>
+
+  <hr class="rule">
+
+  <h3>In Partnership With</h3>
+  <p>Lighthouse Spokane is co-presented by the <a href="#" class="link-out">Inland Northwest Unitarian Universalist Community</a> and <a href="#" class="link-out">Clear Sky Center</a>, a meditation and intentional-community center whose teachers help shape our contemplative practice sessions.</p>
+</section>
+
+<!-- ---------- CTA BAND ---------- -->
+<div class="cta-band">
+  <div class="cta-inner">
+    <h2>Stay in the loop</h2>
+    <p>Join the Lighthouse Spokane Google Group for session dates, discussion material, and updates as they're announced.</p>
+    <a href="#" class="btn gold">Join the Google Group</a>
+  </div>
+</div>
+
+<!-- ---------- TEAM GALLERY ---------- -->
+<section id="team" class="wide">
+  <div class="section-label">Team Gallery</div>
+  <h2>Who's involved</h2>
+
+  <div class="team-list">
+
+    <div class="team-card">
+      <button class="team-head" data-toggle>
+        <div class="avatar">
+          <svg viewBox="0 0 56 56"><ellipse cx="28" cy="28" rx="27" ry="27" fill="none" stroke="#074F57" stroke-width="1"/><ellipse cx="28" cy="28" rx="19" ry="19" fill="none" stroke="#C9961E" stroke-width="1"/></svg>
+          <span class="initials">M</span>
+        </div>
+        <div class="team-name-wrap">
+          <div class="team-name">Mariah</div>
+          <div class="team-role">Placeholder role</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <div class="team-bio">
+        <div class="team-bio-inner">
+          <span class="placeholder-tag">Placeholder</span>
+          <p>Bio to come — background, what she brings to the group, and her connection to this material.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <button class="team-head" data-toggle>
+        <div class="avatar">
+          <svg viewBox="0 0 56 56"><ellipse cx="28" cy="28" rx="27" ry="27" fill="none" stroke="#074F57" stroke-width="1"/><ellipse cx="28" cy="28" rx="19" ry="19" fill="none" stroke="#C9961E" stroke-width="1"/></svg>
+          <span class="initials">T</span>
+        </div>
+        <div class="team-name-wrap">
+          <div class="team-name">Todd</div>
+          <div class="team-role">Placeholder role</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <div class="team-bio">
+        <div class="team-bio-inner">
+          <span class="placeholder-tag">Placeholder</span>
+          <p>Bio to come.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <button class="team-head" data-toggle>
+        <div class="avatar">
+          <svg viewBox="0 0 56 56"><ellipse cx="28" cy="28" rx="27" ry="27" fill="none" stroke="#074F57" stroke-width="1"/><ellipse cx="28" cy="28" rx="19" ry="19" fill="none" stroke="#C9961E" stroke-width="1"/></svg>
+          <span class="initials">CS</span>
+        </div>
+        <div class="team-name-wrap">
+          <div class="team-name">Catherine Pawasarat Sensei</div>
+          <div class="team-role">Spiritual Director, Clear Sky Center</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <div class="team-bio">
+        <div class="team-bio-inner">
+          <span class="placeholder-tag">Placeholder</span>
+          <p>Bio to come — teaching background, role at Clear Sky, and focus within Lighthouse Spokane sessions.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <button class="team-head" data-toggle>
+        <div class="avatar">
+          <svg viewBox="0 0 56 56"><ellipse cx="28" cy="28" rx="27" ry="27" fill="none" stroke="#074F57" stroke-width="1"/><ellipse cx="28" cy="28" rx="19" ry="19" fill="none" stroke="#C9961E" stroke-width="1"/></svg>
+          <span class="initials">KM</span>
+        </div>
+        <div class="team-name-wrap">
+          <div class="team-name">Karen McAllister</div>
+          <div class="team-role">Guest Teacher, Clear Sky Center</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <div class="team-bio">
+        <div class="team-bio-inner">
+          <span class="placeholder-tag">Placeholder</span>
+          <p>Bio to come — meditation and Dharma background, teaching focus.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <button class="team-head" data-toggle>
+        <div class="avatar">
+          <svg viewBox="0 0 56 56"><ellipse cx="28" cy="28" rx="27" ry="27" fill="none" stroke="#074F57" stroke-width="1"/><ellipse cx="28" cy="28" rx="19" ry="19" fill="none" stroke="#C9961E" stroke-width="1"/></svg>
+          <span class="initials">DC</span>
+        </div>
+        <div class="team-name-wrap">
+          <div class="team-name">Duncan Cryle</div>
+          <div class="team-role">Guest Teacher, Clear Sky Center</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <div class="team-bio">
+        <div class="team-bio-inner">
+          <span class="placeholder-tag">Placeholder</span>
+          <p>Bio to come — meditation and Dharma background, teaching focus.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ---------- ABOUT ---------- -->
+<section id="about">
+  <div class="section-label">About</div>
+  <h2>How it works</h2>
+
+  <h3>Format</h3>
+  <p>Lighthouse Spokane meets roughly once a month, in person in Spokane with a remote option for those joining online. Each gathering blends a few elements: some kind of grounding or movement practice to start, a short piece of teaching or input — a video, a reading, a guest presentation — small-group conversation, and a closing reflection.</p>
+
+  <h3>Focus</h3>
+  <p>Sessions draw from metamodern philosophy, contemplative practice, and voices working at the edges of psychology, education, and spirituality — the kind of material found across the liminal web. Topics have ranged from how we relate to different kinds of knowing, to navigating rupture and repair in relationships, to sitting with grief about the state of the world without collapsing into despair or forcing false optimism.</p>
+
+  <h3>Approach</h3>
+  <p>Nothing here is delivered as a finished answer. Each gathering is treated as a live, collective inquiry — the group studying ideas together and then talking honestly about how those ideas actually land in daily life. The structure stays loose on purpose, shaped in real time by whoever shows up and what they bring.</p>
+
+  <h3>Who it's for</h3>
+  <p>Lighthouse Spokane is for people who sense something is shifting — in themselves, in their relationships, in the wider world — and want company while they think it through. Some participants come with a long meditation or philosophy background; many don't. Some are lifelong seekers; others are simply tired of holding everything alone and looking for people to think alongside.</p>
+
+  <h3>What to expect</h3>
+  <p>You do not need to have read anything, practiced anything, or prepared in any way. Come as you are. Every session is designed to be a legitimate entry point on its own — you don't need to have attended the ones before it to follow along or contribute.</p>
+
+  <h3>An invitation</h3>
+  <p>This group is still taking shape, and it's meant to be shaped by the people in the room, not handed down from the front. If you have a reading, a practice, a framework, or simply a question you'd like to bring to the group, we want to hear about it — co-creating the material together is the whole point.</p>
+</section>
+
+<!-- ---------- EVENTS ---------- -->
+<section id="events" class="wide">
+  <div class="section-label">Events</div>
+  <h2>Upcoming gatherings</h2>
+
+  <div class="events-list">
+    <div class="event-item">
+      <div class="event-meta">[Date]<span class="place">[Time · Location]</span></div>
+      <div>
+        <div class="event-title">[Event title]</div>
+        <div class="event-desc">[One to three sentences on the session's focus — details to be added.]</div>
+      </div>
+    </div>
+    <div class="event-item">
+      <div class="event-meta">[Date]<span class="place">[Time · Location]</span></div>
+      <div>
+        <div class="event-title">[Event title]</div>
+        <div class="event-desc">[One to three sentences on the session's focus — details to be added.]</div>
+      </div>
+    </div>
+  </div>
+  <p class="events-note">Full event details coming soon. Join the Google Group to be notified as sessions are scheduled.</p>
+</section>
+
+<!-- ---------- CONTACT ---------- -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <h2>Get in touch</h2>
+  <div class="contact-box">
+    <p>[Placeholder — contact details to come.]</p>
+  </div>
+</section>
+
+<!-- ---------- FOOTER ---------- -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="Lighthouse Spokane mark">
+        <span>LIGHTHOUSE&nbsp;SPOKANE</span>
+      </div>
+      <a href="#" class="btn gold" style="margin-top:18px;">Join the Google Group</a>
+    </div>
+    <div class="footer-links">
+      <div style="margin-bottom:10px;"><strong style="color:var(--cream);font-weight:600;">In Partnership With</strong></div>
+      <div><a href="#">Inland Northwest UU Community</a></div>
+      <div><a href="#">Clear Sky Center</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom footer-inner" style="display:block;">
+    Made possible by a grant through the <a href="#" style="color:#cfe3e1;">UUA's New Communities Partnership Program</a>.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){
+    document.getElementById('navList').classList.toggle('open');
+  });
+  document.querySelectorAll('[data-toggle]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btn.closest('.team-card').classList.toggle('open');
+    });
+  });
+  document.querySelectorAll('nav a').forEach(function(a){
+    a.addEventListener('click', function(){
+      document.getElementById('navList').classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
